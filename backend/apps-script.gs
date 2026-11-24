@@ -1,8 +1,8 @@
 function doPost(e) {
   const sh = SpreadsheetApp.getActiveSheet();
-  if (sh.getLastRow() === 0) sh.appendRow(['Thời gian', 'Họ tên', 'SĐT/Zalo', 'Số người', 'Lời nhắn']);
+  if (sh.getLastRow() === 0) sh.appendRow(['Thời gian', 'Họ tên', 'SĐT/Zalo', 'Số người', 'Lời nhắn', 'Tham dự']);
   const d = JSON.parse(e.postData.contents);
-  sh.appendRow([new Date(), d.name, "'" + d.phone, d.guests, d.note]);
+  sh.appendRow([new Date(), d.name, d.phone ? "'" + d.phone : '', d.guests, d.note, d.attend]);
   return ContentService.createTextOutput('ok');
 }
 
