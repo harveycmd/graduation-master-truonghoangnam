@@ -1,8 +1,11 @@
+const HEADERS = ['Thời gian', 'Họ tên', 'SĐT/Zalo', 'Số người', 'Lời nhắn', 'Bạn sẽ đến chung vui chứ?'];
+
 function doPost(e) {
   const sh = SpreadsheetApp.getActiveSheet();
-  if (sh.getLastRow() === 0) sh.appendRow(['Thời gian', 'Họ tên', 'SĐT/Zalo', 'Số người', 'Lời nhắn', 'Tham dự']);
+  if (sh.getLastRow() === 0) sh.appendRow(HEADERS);
+  else if (!sh.getRange(1, 6).getValue()) sh.getRange(1, 6).setValue(HEADERS[5]); // sheet cũ chưa có cột F
   const d = JSON.parse(e.postData.contents);
-  sh.appendRow([new Date(), d.name, d.phone ? "'" + d.phone : '', d.guests, d.note, d.attend]);
+  sh.appendRow([new Date(), d.name, d.phone ? "'" + d.phone : '', d.guests, d.note, d.attend]); // attend: "Có" / "Không"
   return ContentService.createTextOutput('ok');
 }
 

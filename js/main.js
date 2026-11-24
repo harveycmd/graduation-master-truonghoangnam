@@ -1,5 +1,5 @@
 // Dán URL Google Apps Script (Web app) vào đây để nhận RSVP vào Google Sheet. Để trống = mở email soạn sẵn.
-const ENDPOINT = 'https://script.google.com/macros/s/AKfycbx7ShsSfGF10k0cri7bY3eILo2eOyqE9cvTtPWfn4QYo7waqby0yw5liszDMdsnqKvf/exec';
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzZf31YRvZ5wSDUgfaiqCG4V0fOZnmzaFaMiTF94zZvgLkyRlF1eSawUUoXySxe-tc/exec';
 const MAIL = 'nam.truonghoang@tribox.me';
 
 const $ = s => document.querySelector(s);
