@@ -47,14 +47,17 @@ h2 em{color:var(--gold);font-style:italic;font-weight:500}
 @keyframes float{50%{transform:translateY(-8px)}}
 .btn{background:var(--gold);color:var(--navy);border:0;padding:14px 34px;border-radius:99px;font:500 1rem 'Be Vietnam Pro';cursor:pointer;transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px #d4af6a55}
+.btn:disabled{cursor:wait;opacity:.85;transform:none;box-shadow:none}
+.btn.loading::before{content:'';display:inline-block;width:14px;height:14px;margin-right:10px;vertical-align:-2px;border:2px solid var(--navy);border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* hero */
 #hero{background:linear-gradient(180deg,#0b1a33b8,#0b1a3380 45%,var(--navy)),url(../assets/images/bk6.jpg) center 70%/cover;text-align:center}
 #hero h1{font-size:clamp(2.6rem,9vw,6rem);margin:8px 0 14px}
-#hero .sub{font-size:1.15rem;max-width:560px;margin:0 auto 32px;opacity:.85}
+#hero .sub{font-size:1.15rem;max-width:560px;margin:0 auto 32px;opacity:.85;text-wrap:balance}
 .date{display:inline-block;border:1px solid var(--gold);padding:10px 26px;border-radius:99px;color:var(--gold);letter-spacing:.12em}
-#count{display:flex;gap:16px;justify-content:center;margin-top:36px}
-#count div{min-width:74px;padding:12px 8px;background:#ffffff12;backdrop-filter:blur(6px);border-radius:14px}
+#count{display:flex;gap:10px;justify-content:center;margin-top:36px}
+#count div{flex:1 1 0;max-width:74px;min-width:0;padding:12px 8px;background:#ffffff12;backdrop-filter:blur(6px);border-radius:14px}
 #count b{display:block;font:700 1.9rem 'Playfair Display';color:var(--gold)}
 #count span{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;opacity:.7}
 .scroll{position:absolute;bottom:28px;left:50%;translate:-50% 0;font-size:.75rem;letter-spacing:.3em;opacity:.6;animation:bob 2s infinite}
@@ -164,7 +167,8 @@ footer{margin-top:56px;font-size:.85rem;opacity:.55}
 .nav-links a:hover{color:var(--cream)}
 .nav-links a.on{color:var(--gold)}
 .nav-links a.cta{background:var(--gold);color:var(--navy);font-weight:500}
-@media(max-width:640px){#nav .brand{display:none}.nav-links{width:100%;justify-content:space-between}.nav-links a{padding:8px 10px;font-size:.8rem}}
+@media(max-width:640px){#nav{padding:8px 6px}#nav .brand{display:none}.nav-links{width:100%;gap:0}.nav-links a{flex:1 1 auto;text-align:center;padding:8px 6px;font-size:.78rem}}
+@media(max-width:380px){.nav-links a{padding:8px 4px;font-size:.72rem}}
 
 .rv{opacity:0;transform:translateY(34px);transition:opacity 1s,transform 1s}
 .rv.in{opacity:1;transform:none}
