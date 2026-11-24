@@ -1,9 +1,9 @@
 :root{--navy:#0b1a33;--navy2:#13294d;--gold:#d4af6a;--cream:#f6efe0;--ink:#e9edf5}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+html{scroll-behavior:smooth}
 body{background:var(--navy);color:var(--ink);font:300 17px/1.7 'Be Vietnam Pro',sans-serif;overflow-x:hidden}
 h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2}
-section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:96px 24px;position:relative;scroll-snap-align:start}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:96px 24px;position:relative}
 .wrap{max-width:1000px;width:100%}
 .eyebrow{letter-spacing:.32em;text-transform:uppercase;font-size:.78rem;color:var(--gold);margin-bottom:18px}
 h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:24px}
@@ -118,10 +118,13 @@ blockquote{border-left:2px solid var(--gold);padding-left:18px;margin-top:22px;f
 /* wishes */
 #chuc{background:linear-gradient(var(--navy),var(--navy2) 50%,var(--navy));text-align:center}
 .wall{--H:min(72vh,620px);position:relative;height:var(--H);overflow:hidden;margin-top:28px;border-radius:24px;border:1px solid #d4af6a33;text-align:left;
-  background:radial-gradient(circle at 20% 90%,#d4af6a1f,transparent 45%),radial-gradient(circle at 85% 20%,#3b6fd426,transparent 45%),#0a162b;
-  -webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+  background:radial-gradient(circle at 20% 90%,#d4af6a1f,transparent 45%),radial-gradient(circle at 85% 20%,#3b6fd426,transparent 45%),#0a162b}
+.wall::before,.wall::after{content:'';position:absolute;left:0;right:0;height:12%;z-index:6;pointer-events:none}
+.wall::before{top:0;background:linear-gradient(#0a162b,#0a162b00)}
+.wall::after{bottom:0;background:linear-gradient(#0a162b00,#0a162b)}
+.wall.off .wish{animation-play-state:paused}
 .wish{--bw:min(240px,78%);position:absolute;top:100%;width:var(--bw);left:calc(28px + (100% - var(--bw) - 56px)*var(--f,0));padding:14px 16px 14px;border-radius:22px 22px 22px 6px;cursor:pointer;
-  background:linear-gradient(135deg,#ffffff2b,#ffffff0f);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid #ffffff30;box-shadow:0 12px 32px #0007,inset 0 1px 0 #ffffff33;
+  background:linear-gradient(135deg,#2c4370f2,#192d50f2);border:1px solid #ffffff30;box-shadow:0 8px 20px #0006,inset 0 1px 0 #ffffff33;
   animation:rise var(--d) linear var(--dl) infinite,sway calc(var(--d)/3) ease-in-out var(--dl) infinite alternate;will-change:transform}
 .wish:hover,.wish.hold{animation-play-state:paused;z-index:5;border-color:var(--gold)}
 .wish header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
@@ -176,3 +179,5 @@ footer{margin-top:56px;font-size:.85rem;opacity:.55}
 @media(max-width:760px){.mos{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto}.mos img{aspect-ratio:16/10}.mos img:first-child{grid-row:auto}.hall img{aspect-ratio:16/9}
 .two{grid-template-columns:1fr;gap:32px}.gal{grid-template-columns:1fr 1fr}.gal img:last-child{grid-column:1/-1;aspect-ratio:16/10}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* điện thoại: bỏ blur nền (nặng khi cuộn) */
+@media(hover:none){#nav{background:#0b1a33f5;backdrop-filter:none;-webkit-backdrop-filter:none}#mute{background:#0b1a33f5;backdrop-filter:none}#count div{backdrop-filter:none;background:#ffffff1c}}

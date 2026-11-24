@@ -123,3 +123,5 @@ async function loadWishes() {
   try { (await (await fetch(ENDPOINT)).json()).forEach(w => addWish(w)); } catch {}
 }
 loadWishes(); setInterval(loadWishes, 90000);
+// dừng bóng bay khi khung lời chúc ra khỏi màn hình (đỡ tốn GPU khi cuộn)
+new IntersectionObserver(([e]) => wall.classList.toggle('off', !e.isIntersecting)).observe(wall);
